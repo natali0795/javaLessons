@@ -1,4 +1,4 @@
-package hw.lesson_4;
+package hw.lesson_4.animals;
 
 public class Cat extends Animal {
 
