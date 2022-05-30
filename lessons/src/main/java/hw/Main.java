@@ -41,8 +41,8 @@ public class Main {
     // Покупка
         Payment payment = new Payment();
         payment.addProduct("product1", 1);
-        payment.addProduct("product2", 1.2);
-        payment.addProduct("product3", 4);
+        payment.addProduct("product2", 1);
+        payment.addProduct("product3", 2);
 
         payment.showProducts();
     }
