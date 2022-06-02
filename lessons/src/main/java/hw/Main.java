@@ -1,60 +1,66 @@
 package hw;
 
-import hw.lesson_4.animals.Animal;
-import hw.lesson_4.animals.Cat;
-import hw.lesson_4.animals.Dog;
-import hw.lesson_4.animals.Plate;
-import hw.lesson_4.order.Payment;
 
+import hw.lesson_5.Apple;
+import hw.lesson_5.Orange;
+import hw.lesson_5.Box;
+
+import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
-        Animal catMusy = new Cat("Муся");
-        Animal dogTusia = new Dog("Тузя");
 
-        catMusy.run(150);
-        dogTusia.run(600);
+        // Задача 1. Написать метод, который меняет два элемента массива местами.
+        // (массив может быть любого ссылочного типа);
+        String[] arr = {"a", "b", "c", "125"};
 
-        catMusy.swim(10);
-        dogTusia.swim(5);
 
-        Animal[] animals = new Animal[4];
-        animals[0] = catMusy;
-        animals[1] = dogTusia;
-        animals[2] = new Cat("Мурчик");
-        animals[3] = new Cat("Буся");
+        System.out.println("Задача1\n" + Arrays.toString(arr));
+        swapElements(arr, 2, 3);
+        System.out.println(Arrays.toString(arr));
 
-        for (Animal animal : animals) {
-            animal.run(150);
-            animal.swim(150);
+
+        //Задача 3. Коробки с фруктами
+        Orange orange = new Orange();
+        Apple apple = new Apple();
+        Box<Orange> orangeBox1 = new Box();
+        Box<Orange> orangeBox2 = new Box();
+        Box<Apple> appleBox = new Box();
+        orangeBox1.add(new Orange());
+        orangeBox1.add(new Orange());
+        orangeBox1.add(new Orange());
+
+        for (int i = 0; i < 4; i++) {
+            orangeBox2.add(new Orange());
         }
-        // Все коты едят с одной тарелки
-        Cat[] cats = new Cat[4];
+        for (int i = 0; i < 6; i++) {
+            appleBox.add (new Apple());
+        }
+        
+        orangeBox1.info();
+        orangeBox2.info();
+        appleBox.info();
 
-        cats[0] = new Cat("Чурныш", 50);
-        cats[1] = new Cat("Бублик", 5);
-        cats[2] = new Cat("Мурчик", 50);
-        cats[3] = new Cat("Буся", 30);
+        Float orange1Weigth = orangeBox1.getWeight();
+        Float orange2Weigth = orangeBox2.getWeight();
+        Float appleWeigth = appleBox.getWeight();
+        System.out.println("Вес коробки 1 с апельсинами: " + orange1Weigth);
+        System.out.println("Вес коробки 2 с апельсинами: " + orange2Weigth);
+        System.out.println("Вес коробки с яблоками: " + appleWeigth);
 
-        Plate plate = new Plate(50);
-        meal(cats, plate);
+        System.out.println("Сравнить вес orangeBox1 и appleBox: " + orangeBox1.compare(appleBox));
+        System.out.println("Сравнить вес orangeBox2 и appleBox: " + orangeBox2.compare(appleBox));
+        
 
-    // Покупка
-        Payment payment = new Payment();
-        payment.addProduct("product1", 1);
-        payment.addProduct("product2", 1);
-        payment.addProduct("product3", 2);
-
-        payment.showProducts();
+        orangeBox1.info();
+        orangeBox2.info();
+        appleBox.info();
     }
 
-    // информация о сытости котов
-    public static void meal(Cat[] cats, Plate plate) {
-
-        for (Cat cat : cats) {
-            plate.setFood(cat.eat(plate.getFood()));
-
-            System.out.println("Кот " + (cat.getHungry() ? "голоден" : "сыт"));
-        }
+    private static <T> void swapElements(T[] array, int index1, int index2) {
+        T temp = array[index1];
+        array[index1] = array[index2];
+        array[index2] = temp;
     }
+
 
 }
