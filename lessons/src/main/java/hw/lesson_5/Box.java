@@ -1,12 +1,10 @@
 package hw.lesson_5;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * Класс-дженерик
- */
 public class Box<T extends Fruit> {
     public List<T> getList() {
         return list;
@@ -25,25 +23,24 @@ public class Box<T extends Fruit> {
     public void add(T obj) {
         list.add(obj);
     }
+
     public void info() {
         if (list.isEmpty()) {
             System.out.println("Коробка пуста");
         } else {
-            System.out.println("В коробке находятся " + list.get(0).toString() + " в количестве: " + list.size());
+            System.out.println("В коробке находяться" + list.get(0).toString() + "в количестве: " + list.size());
         }
-    }
 
-    public float getWeight() {
+    }
+    public  float getWeight(){
         if (list.isEmpty()) {
             return 0;
-        } else {
+        }  else {
             return list.size() * list.get(0).getWeight();
         }
     }
-
-    public boolean compare(Box<? extends Fruit> box) {
-        return this.getWeight() == box.getWeight();
+    public boolean compare(Box<? extends Fruit> box){
+        return  this.getWeight() == box.getWeight();
     }
-
-
 }
+
